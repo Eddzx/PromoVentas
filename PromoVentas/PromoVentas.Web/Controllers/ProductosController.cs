@@ -1,4 +1,4 @@
-﻿using PromoVentas.Web.Models;
+﻿using PromoVenta.BL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,25 +12,10 @@ namespace PromoVentas.Web.Controllers
         // GET: Productos
         public ActionResult Index()
         {
+            var ProductosBL = new ProductosBL();
+            var ListadeProductos = ProductosBL.ObtenerProductos();
 
-            var producto1 = new ProductoModel();
-            producto1.Id = 1;
-            producto1.Descripcion = " Fardo de Maseca";
-
-            var producto2 = new ProductoModel();
-            producto2.Id = 1;
-            producto2.Descripcion = " Caja de manteca";
-
-            var producto3 = new ProductoModel();
-            producto3.Id = 1;
-            producto3.Descripcion = " Galon de aceite";
-
-            var listadeProductos = new List<ProductoModel>();
-            listadeProductos.Add(producto1);
-            listadeProductos.Add(producto2);
-            listadeProductos.Add(producto3);
-
-            return View(listadeProductos);
+            return View(ListadeProductos);
         }
     }
 }

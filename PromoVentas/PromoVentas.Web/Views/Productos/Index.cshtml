@@ -1,4 +1,5 @@
-﻿@model List<PromoVentas.Web.Models.ProductoModel>
+﻿@model List<PromoVenta.BL.Producto>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -7,7 +8,5 @@
 
 @foreach (var producto in Model)
 {
-    <p>@producto.Id @producto.Descripcion</p>
+    <p>@producto.Descripcion</p>
 }
-
-
