@@ -23,7 +23,7 @@ namespace PromoVentas.Web.Controllers
 
             var producto3 = new ProductoModel();
             producto3.Id = 1;
-            producto3.Descripcion = " Tambo de aceite";
+            producto3.Descripcion = " Galon de aceite";
 
             var listadeProductos = new List<ProductoModel>();
             listadeProductos.Add(producto1);
