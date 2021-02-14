@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace PromoVentas.Web.Controllers
 {
-    public class InicioController : Controller
+    public class HomeController : Controller
     {
         // GET: Inicio
         public ActionResult Index()
