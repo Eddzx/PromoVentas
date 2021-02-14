@@ -11,10 +11,5 @@ namespace PromoVenta.BL
         public int Id { get; set; }
         public string Descripcion { get; set; }
         public double Precio { get; set; }
-
-        public object ObtenerProductos()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
