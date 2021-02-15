@@ -13,14 +13,17 @@ namespace PromoVenta.BL
             var producto1 = new Producto();
             producto1.Id = 1;
             producto1.Descripcion = " Fardo de Maseca";
+            producto1.Precio = 160;
 
             var producto2 = new Producto();
-            producto2.Id = 1;
+            producto2.Id = 2;
             producto2.Descripcion = " Caja de manteca";
+            producto2.Precio = 480;
 
             var producto3 = new Producto();
-            producto3.Id = 1;
+            producto3.Id = 3;
             producto3.Descripcion = " Galon de aceite";
+            producto3.Precio = 620;
 
             var listadeProductos = new List<Producto>();
             listadeProductos.Add(producto1);
