@@ -23,5 +23,11 @@ namespace PromoVenta.BL
 
             return ListadeProductos;
         }
+        public void GuardarProducto(Producto Producto)
+        {
+            _contexto.Producto.Add(Producto);
+            _contexto.SaveChanges();
+        }
+    
     }
 }
