@@ -25,9 +25,28 @@ namespace PromoVenta.BL
         }
         public void GuardarProducto(Producto Producto)
         {
-            _contexto.Producto.Add(Producto);
+            if(Producto.Id == 0)
+            {
+                _contexto.Producto.Add(Producto);
+            } else
+            {
+                var ProductoExistente = _contexto.Producto.Find(Producto.Id);
+                ProductoExistente.Descripcion = Producto.Descripcion;
+                ProductoExistente.Precio = Producto.Precio;
+            }
+
             _contexto.SaveChanges();
         }
-    
+    public Producto ObtenerProducto(int id)
+        {
+            var Producto = _contexto.Producto.Find(id);
+
+            return Producto;
+        }
+
+        public object ObtenerProductos(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
