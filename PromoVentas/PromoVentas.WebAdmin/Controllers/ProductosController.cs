@@ -41,7 +41,7 @@ namespace PromoVentas.WebAdmin.Controllers
         }
         public ActionResult Editar(int id)
         {
-            var producto = _productosBL.ObtenerProductos(id);
+            var producto = _productosBL.ObtenerProducto(id);
 
             return View(producto);
         }
@@ -52,6 +52,14 @@ namespace PromoVentas.WebAdmin.Controllers
             return RedirectToAction("Index");      
                 
          }
+        public ActionResult Detalle(int id)
+        {
+            var Producto = _productosBL.ObtenerProducto(id);
+
+            return View(Producto);
+        }
     }
+
+
 
 }
