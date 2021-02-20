@@ -58,8 +58,20 @@ namespace PromoVentas.WebAdmin.Controllers
 
             return View(Producto);
         }
+
+        public ActionResult Eliminar(int id)
+        {
+            var Producto = _productosBL.ObtenerProducto(id);
+
+            return View(Producto);
+        }
+        [HttpPost]
+        public ActionResult Eliminar(Producto Producto)
+        {
+            _productosBL.EliminarProducto(Producto.Id);
+
+            return RedirectToAction("Index");
+        }
+
     }
-
-
-
 }

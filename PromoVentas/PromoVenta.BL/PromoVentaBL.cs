@@ -37,11 +37,20 @@ namespace PromoVenta.BL
 
             _contexto.SaveChanges();
         }
-    public Producto ObtenerProducto(int id)
+
+        public Producto ObtenerProducto(int id)
         {
             var Producto = _contexto.Producto.Find(id);
 
             return Producto;
+        }
+
+        public void EliminarProducto(int id)
+        {
+            var Producto = _contexto.Producto.Find(id);
+
+            _contexto.Producto.Remove(Producto);
+            _contexto.SaveChanges();
         }
 
         public object ObtenerProductos(int id)
