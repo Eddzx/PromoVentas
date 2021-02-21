@@ -21,5 +21,6 @@ namespace PromoVenta.BL
         }
 
         public DbSet<Producto> Producto { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
     }
 }
