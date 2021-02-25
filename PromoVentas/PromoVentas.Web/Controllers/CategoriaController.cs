@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace PromoVentas.Web.Controllers
 {
+    [Authorize]
     public class CategoriaController : Controller
     {
         CategoriasBL _categoriasBL;
@@ -18,6 +19,7 @@ namespace PromoVentas.Web.Controllers
         // GET: Categoria
         public ActionResult Index()
         {
+
             var ListadeCategorias = _categoriasBL.ObtenerCategoria();
 
             return View(ListadeCategorias);
