@@ -17,7 +17,9 @@ namespace PromoVenta.BL
 
         public List<Producto> ObtenerProductos()
         {
-            ListadeProductos = _contexto.Producto.ToList();
+            ListadeProductos = _contexto.Producto
+                  .Include("Categoria")
+                  .ToList();
 
             return ListadeProductos;
         }
@@ -35,10 +37,10 @@ namespace PromoVenta.BL
 
             _contexto.SaveChanges();
         }
-
         public Producto ObtenerProducto(int id)
         {
-            var Producto = _contexto.Producto.Find(id);
+            var Producto = _contexto.Producto.Include("Categoria").FirstOrDefault(p => p.Id == id);
+
 
             return Producto;
         }
@@ -51,9 +53,5 @@ namespace PromoVenta.BL
             _contexto.SaveChanges();
         }
 
-        public object ObtenerProductos(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

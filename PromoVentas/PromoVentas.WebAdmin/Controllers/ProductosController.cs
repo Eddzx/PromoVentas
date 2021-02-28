@@ -1,5 +1,6 @@
 ﻿using PromoVenta.BL;
 using System.Web.Mvc;
+using System.Collections;
 
 namespace PromoVentas.WebAdmin.Controllers
 {
@@ -7,10 +8,13 @@ namespace PromoVentas.WebAdmin.Controllers
 
     {
         ProductosBL _productosBL;
+      CategoriasBL _CategoriasBL;
+        private IEnumerable Categorias;
 
         public ProductosController()
         {
             _productosBL = new ProductosBL();
+            _CategoriasBL = new CategoriasBL();
         }
         // GET: Productos
         public ActionResult Index()
@@ -24,6 +28,9 @@ namespace PromoVentas.WebAdmin.Controllers
         public ActionResult Crear()
         {
             var nuevoProducto = new Producto();
+            var Categoria = _CategoriasBL.ObtenerCategorias();
+
+            ViewBag.ListaCategorias =  new SelectList(Categorias, "Id", "Descripcion");
 
             return View(nuevoProducto);
 
@@ -31,22 +38,55 @@ namespace PromoVentas.WebAdmin.Controllers
         [HttpPost]
         public ActionResult Crear(Producto Producto)
         {
-            _productosBL.GuardarProducto(Producto);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                if(Producto.CategoriaId ==0)
+                {
+
+                    ModelState.AddModelError("CategoriaId", "Seleccione una categoria");
+                    return View(Producto);
+                }
+
+                _productosBL.GuardarProducto(Producto);
+                return RedirectToAction("Index");
+            }
+            var Categoria = _CategoriasBL.ObtenerCategorias();
+
+            ViewBag.ListaCategorias = new SelectList(Categorias, "Id", "Descripcion");
+
+            return View(Producto);
         }
         public ActionResult Editar(int id)
         {
             var producto = _productosBL.ObtenerProducto(id);
+            var Categoria = _CategoriasBL.ObtenerCategorias();
+
+            ViewBag.categoriaId = new SelectList(Categorias, "Id", "Descripcion", producto.CategoriaId);
 
             return View(producto);
         }
         [HttpPost]
         public ActionResult editar(Producto Producto)
         {
-            _productosBL.GuardarProducto(Producto);
-            return RedirectToAction("Index");      
-                
-         }
+            if (ModelState.IsValid)
+            {
+                if (Producto.CategoriaId == 0)
+                {
+
+                    ModelState.AddModelError("CategoriaId", "Seleccione una categoria");
+                    return View(Producto);
+                }
+
+                _productosBL.GuardarProducto(Producto);
+                return RedirectToAction("Index");
+            }
+            var Categoria = _CategoriasBL.ObtenerCategorias();
+
+            ViewBag.ListaCategorias = new SelectList(Categorias, "Id", "Descripcion");
+
+            return View(Producto);
+
+        }
         public ActionResult Detalle(int id)
         {
             var Producto = _productosBL.ObtenerProducto(id);
@@ -57,6 +97,7 @@ namespace PromoVentas.WebAdmin.Controllers
         public ActionResult Eliminar(int id)
         {
             var Producto = _productosBL.ObtenerProducto(id);
+
 
             return View(Producto);
         }

@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace PromoVenta.BL
 {
-    public class Categorias
+    public class CategoriaBL
     {
         Contexto _contexto;
 
         public List<Categoria> ListadeCategorias { get; set; }
         public int Id { get; private set; }
 
-        public Categorias()
+        public CategoriaBL()
         {
             _contexto = new Contexto();
             ListadeCategorias = new List<Categoria>();
         }
 
-        public List<Categoria> ObtenerCategoria()
+        public List<Categoria> ObtenerCategorias()
         {
             ListadeCategorias = _contexto.Categorias.ToList();
 

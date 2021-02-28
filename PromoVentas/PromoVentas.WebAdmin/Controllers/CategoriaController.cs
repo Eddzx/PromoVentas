@@ -9,17 +9,17 @@ namespace PromoVentas.Web.Controllers
 {
     public class CategoriaController : Controller
     {
-        Categorias _categoriasBL;
+        CategoriaBL _categoriasBL;
 
         public CategoriaController()
         {
-            _categoriasBL = new Categorias();
+            _categoriasBL = new CategoriaBL();
         }
         // GET: Categoria
         public ActionResult Index()
         {
 
-            var ListadeCategorias = _categoriasBL.ObtenerCategoria();
+            var ListadeCategorias = _categoriasBL.ObtenerCategorias();
 
             return View(ListadeCategorias);
         }//crar categorias------------------------------------------------
@@ -29,10 +29,20 @@ namespace PromoVentas.Web.Controllers
             return View(nuevaCategoria);
         }
         [HttpPost]//para que habra las paginas
-        public ActionResult Crear(Categoria producto)
+        public ActionResult Crear(Categoria categoria)
+      
         {
-            _categoriasBL.GuardarCategoria(producto);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                if(categoria.Descripcion !=categoria.Descripcion.Trim())
+                {
+                    ModelState.AddModelError("Descripcion", "La descripcion no debe contener espacios al inicio o al final");
+                    return View(categoria);
+                }
+                _categoriasBL.GuardarCategoria(categoria);
+                return RedirectToAction("Index");
+            }
+            return View(categoria);
         }
 
         public ActionResult Editar(int id)
@@ -41,10 +51,19 @@ namespace PromoVentas.Web.Controllers
             return View(producto);
         }
         [HttpPost]//para que habra las paginas
-        public ActionResult Editar(Categoria producto)
+        public ActionResult Editar(Categoria categoria)
         {
-            _categoriasBL.ObtenerCategoria();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                if (categoria.Descripcion != categoria.Descripcion.Trim())
+                {
+                    ModelState.AddModelError("Descripcion", "La descripcion no debe contener espacios al inicio o al final");
+                    return View(categoria);
+                }
+                _categoriasBL.GuardarCategoria(categoria);
+                return RedirectToAction("Index");
+            }
+            return View(categoria);
         }
 
         public ActionResult Detalle(int id)
