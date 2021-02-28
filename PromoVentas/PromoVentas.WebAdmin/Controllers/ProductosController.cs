@@ -77,7 +77,7 @@ namespace PromoVentas.web.Controllers
             return View(producto);
         }
         [HttpPost]
-        public ActionResult editar(Producto Producto)
+        public ActionResult editar(Producto Producto, HttpPostedFileBase imagen)
         {
             if (ModelState.IsValid)
             {

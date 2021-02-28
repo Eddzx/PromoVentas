@@ -35,6 +35,7 @@ namespace PromoVenta.BL
                 var ProductoExistente = _contexto.Productos.Find(Producto.Id);
                 ProductoExistente.Descripcion = Producto.Descripcion;
                 ProductoExistente.Precio = Producto.Precio;
+                ProductoExistente.UrlImagen = Producto.UrlImagen;
             }
 
             _contexto.SaveChanges();
