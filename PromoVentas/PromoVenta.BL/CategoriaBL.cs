@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace PromoVenta.BL
 {
-    public class CategoriasBL
+    public class Categorias
     {
         Contexto _contexto;
 
         public List<Categoria> ListadeCategorias { get; set; }
+        public int Id { get; private set; }
 
-        public CategoriasBL()
+        public Categorias()
         {
             _contexto = new Contexto();
             ListadeCategorias = new List<Categoria>();
@@ -40,17 +41,7 @@ namespace PromoVenta.BL
             _contexto.SaveChanges();
         }
 
-        public object ObtenerCategoria(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GuardarCategoria(CategoriasBL categoria)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Categoria ObtenerProducto(int id)
+        public Categoria ObtenerCategoria(int id)
         {
             var categoria = _contexto.Categorias.Find(id);
 

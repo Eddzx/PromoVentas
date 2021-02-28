@@ -9,11 +9,11 @@ namespace PromoVentas.Web.Controllers
 {
     public class CategoriaController : Controller
     {
-        CategoriasBL _categoriasBL;
+        Categorias _categoriasBL;
 
         public CategoriaController()
         {
-            _categoriasBL = new CategoriasBL();
+            _categoriasBL = new Categorias();
         }
         // GET: Categoria
         public ActionResult Index()
@@ -29,7 +29,7 @@ namespace PromoVentas.Web.Controllers
             return View(nuevaCategoria);
         }
         [HttpPost]//para que habra las paginas
-        public ActionResult Crear(CategoriasBL producto)
+        public ActionResult Crear(Categoria producto)
         {
             _categoriasBL.GuardarCategoria(producto);
             return RedirectToAction("Index");
