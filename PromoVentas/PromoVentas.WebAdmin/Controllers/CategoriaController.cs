@@ -23,7 +23,7 @@ namespace PromoVentas.Web.Controllers
             var ListadeCategorias = _categoriasBL.ObtenerCategorias();
 
             return View(ListadeCategorias);
-        }//crar categorias------------------------------------------------
+        }//-------------------------------------------crar categorias------------------------------------------------
         public ActionResult Crear()
         {
             var nuevaCategoria = new Categoria();
@@ -51,7 +51,7 @@ namespace PromoVentas.Web.Controllers
             var producto = _categoriasBL.ObtenerCategoria(id);
             return View(producto);
         }
-        [HttpPost]//para que habra las paginas
+        [HttpPost]//-------------------------------------------ediatr--------------------------------------------
         public ActionResult Editar(Categoria categoria)
         {
             if (ModelState.IsValid)
@@ -72,13 +72,13 @@ namespace PromoVentas.Web.Controllers
             var producto = _categoriasBL.ObtenerCategoria(id);
             return View(producto);
         }
-
+        //-------------------------------------------detalle-------------------------------------------
         public ActionResult Eliminar(int id)
         {
             var producto = _categoriasBL.ObtenerCategoria(id);
             return View(producto);
         }
-
+        //-------------------------------------------eliminar-------------------------------------------
         [HttpPost]//para que habra las paginas
         public ActionResult Eliminar(Categoria producto)
         {

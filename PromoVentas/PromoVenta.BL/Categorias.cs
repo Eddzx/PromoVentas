@@ -15,3 +15,4 @@ namespace PromoVenta.BL
         public string Descripcion { get; set; }
     }
 }
+//se crearon categorias

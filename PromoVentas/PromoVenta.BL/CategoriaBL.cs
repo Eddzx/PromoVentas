@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PromoVenta.BL
-{
+{//con todo lo que se hizo para productos ahora en categoria
     public class CategoriasBL
     {
         Contexto _contexto;

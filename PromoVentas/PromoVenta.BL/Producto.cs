@@ -9,6 +9,7 @@ namespace PromoVenta.BL
 {
     public class Producto
     {
+        //nuevo-----
         public Producto()
         {
             Activo = true;
