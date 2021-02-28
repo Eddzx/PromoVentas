@@ -7,7 +7,6 @@ using System.Web.Mvc;
 
 namespace PromoVentas.Web.Controllers
 {
-    [Authorize]
     public class CategoriaController : Controller
     {
         CategoriasBL _categoriasBL;
