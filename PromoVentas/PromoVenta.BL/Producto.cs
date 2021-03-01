@@ -28,7 +28,7 @@ namespace PromoVenta.BL
         public int CategoriaId { get; set; }
         public Categoria categoria { get; set; }
 
-        [Display(Name = "imagen")]
+        [Display(Name = "Imagen")]
         public string UrlImagen { get; set; }
 
         public bool Activo { get; set; }
