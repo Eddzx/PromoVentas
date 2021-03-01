@@ -1,6 +1,8 @@
 ﻿using PromoVenta.BL;
 using System.Web.Mvc;
 using System.Collections;
+using System.Web;
+using System;
 
 namespace PromoVentas.WebAdmin.Controllers
 {
@@ -36,7 +38,7 @@ namespace PromoVentas.WebAdmin.Controllers
 
         }
         [HttpPost]
-        public ActionResult Crear(Producto Producto)
+        public ActionResult Crear(Producto Producto, HttpPostedFile imagen)
         {
             if(ModelState.IsValid)
             {
@@ -47,6 +49,12 @@ namespace PromoVentas.WebAdmin.Controllers
                     return View(Producto);
                 }
 
+                if(imagen != null ) 
+                 {
+                    Producto.UrlImagen = GuardarImagen(imagen);     
+                 }
+
+
                 _productosBL.GuardarProducto(Producto);
                 return RedirectToAction("Index");
             }
@@ -56,6 +64,12 @@ namespace PromoVentas.WebAdmin.Controllers
 
             return View(Producto);
         }
+
+        private string GuardarImagen(HttpPostedFile imagen)
+        {
+            throw new NotImplementedException();
+        }
+
         public ActionResult Editar(int id)
         {
             var producto = _productosBL.ObtenerProducto(id);
@@ -109,5 +123,12 @@ namespace PromoVentas.WebAdmin.Controllers
             return RedirectToAction("Index");
         }
 
+        private string GuardarImagen(HttpPostedFileBase imagen)
+        {
+            string path = Server.MapPath("~/Imagenes/" + imagen.FileName);
+            imagen.SaveAs(path);
+
+            return "/Imagenes/" + imagen.FileName;
+        }
     }
 }
