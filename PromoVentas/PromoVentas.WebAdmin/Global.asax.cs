@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace PromoVentas.WebAdmin
+namespace PromoVentas.web
 {
     public class MvcApplication : System.Web.HttpApplication
     {

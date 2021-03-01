@@ -1,4 +1,4 @@
-﻿using PromoVenta.BL;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace PromoVenta.BL
 {
-    public class CategoriaBL
+    public class CategoriasBL
     {
         Contexto _contexto;
 
         public List<Categoria> ListadeCategorias { get; set; }
         public int Id { get; private set; }
 
-        public CategoriaBL()
+        public CategoriasBL()
         {
             _contexto = new Contexto();
             ListadeCategorias = new List<Categoria>();

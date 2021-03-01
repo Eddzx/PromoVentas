@@ -1,20 +1,23 @@
 ﻿using PromoVenta.BL;
+using System.Web;
 using System.Web.Mvc;
-using System.Collections;
 
-namespace PromoVentas.WebAdmin.Controllers
+namespace PromoVentas.web.Controllers
 {
+
+   
+
     public class ProductosController : Controller
 
     {
         ProductosBL _productosBL;
-      CategoriasBL _CategoriasBL;
-        private IEnumerable Categorias;
+      CategoriasBL _categoriasBL;
+        
 
         public ProductosController()
         {
             _productosBL = new ProductosBL();
-            _CategoriasBL = new CategoriasBL();
+            _categoriasBL = new CategoriasBL();
         }
         // GET: Productos
         public ActionResult Index()
@@ -28,9 +31,9 @@ namespace PromoVentas.WebAdmin.Controllers
         public ActionResult Crear()
         {
             var nuevoProducto = new Producto();
-            var Categoria = _CategoriasBL.ObtenerCategorias();
+            var categorias = _categoriasBL.ObtenerCategorias();
 
-            ViewBag.ListaCategorias =  new SelectList(Categorias, "Id", "Descripcion");
+            ViewBag.CategoriaId =  new SelectList(categorias, "Id", "Descripcion");
 
             return View(nuevoProducto);
 
@@ -40,7 +43,7 @@ namespace PromoVentas.WebAdmin.Controllers
         {
             if(ModelState.IsValid)
             {
-                if(Producto.CategoriaId ==0)
+                if(Producto.CategoriaId == 0)
                 {
 
                     ModelState.AddModelError("CategoriaId", "Seleccione una categoria");
@@ -50,18 +53,18 @@ namespace PromoVentas.WebAdmin.Controllers
                 _productosBL.GuardarProducto(Producto);
                 return RedirectToAction("Index");
             }
-            var Categoria = _CategoriasBL.ObtenerCategorias();
+            var Categorias = _categoriasBL.ObtenerCategorias();
 
-            ViewBag.ListaCategorias = new SelectList(Categorias, "Id", "Descripcion");
+            ViewBag.CategoriaId = new SelectList(Categorias, "Id", "Descripcion");
 
             return View(Producto);
         }
         public ActionResult Editar(int id)
         {
             var producto = _productosBL.ObtenerProducto(id);
-            var Categoria = _CategoriasBL.ObtenerCategorias();
+            var categorias = _categoriasBL.ObtenerCategorias();
 
-            ViewBag.categoriaId = new SelectList(Categorias, "Id", "Descripcion", producto.CategoriaId);
+            ViewBag.CategoriaId = new SelectList(categorias, "Id", "Descripcion", producto.CategoriaId);
 
             return View(producto);
         }
@@ -80,9 +83,9 @@ namespace PromoVentas.WebAdmin.Controllers
                 _productosBL.GuardarProducto(Producto);
                 return RedirectToAction("Index");
             }
-            var Categoria = _CategoriasBL.ObtenerCategorias();
+            var Categorias = _categoriasBL.ObtenerCategorias();
 
-            ViewBag.ListaCategorias = new SelectList(Categorias, "Id", "Descripcion");
+            ViewBag.CategoriaId = new SelectList(Categorias, "Id", "Descripcion");
 
             return View(Producto);
 

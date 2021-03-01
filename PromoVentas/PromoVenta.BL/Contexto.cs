@@ -20,7 +20,7 @@ namespace PromoVenta.BL
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
-        public DbSet<Producto> Producto { get; set; }
+        public DbSet<Producto> Productos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
     }
 }

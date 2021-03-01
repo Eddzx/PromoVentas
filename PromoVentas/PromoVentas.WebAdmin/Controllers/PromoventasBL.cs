@@ -1,6 +1,6 @@
-﻿namespace PromoVentas.WebAdmin.Controllers
+﻿namespace PromoVentas.web.Controllers
 {
-    internal class PromoventasBL
+    internal class PromoventaBL
     {
     }
 }

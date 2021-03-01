@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace PromoVentas.Web
+namespace PromoVentas.web
 {
     public class RouteConfig
     {

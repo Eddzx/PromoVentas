@@ -1,7 +1,7 @@
 ﻿using PromoVenta.BL;
 using System.Web.Mvc;
 
-namespace PromoVentas.Web.Controllers
+namespace PromoVentas.web.Controllers
 {
     public class ProductosController : Controller
     {

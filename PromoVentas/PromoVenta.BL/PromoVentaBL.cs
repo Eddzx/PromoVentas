@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace PromoVenta.BL
 {
@@ -17,7 +18,7 @@ namespace PromoVenta.BL
 
         public List<Producto> ObtenerProductos()
         {
-            ListadeProductos = _contexto.Producto
+            ListadeProductos = _contexto.Productos
                   .Include("Categoria")
                   .ToList();
 
@@ -27,10 +28,10 @@ namespace PromoVenta.BL
         {
             if(Producto.Id == 0)
             {
-                _contexto.Producto.Add(Producto);
+                _contexto.Productos.Add(Producto);
             } else
             {
-                var ProductoExistente = _contexto.Producto.Find(Producto.Id);
+                var ProductoExistente = _contexto.Productos.Find(Producto.Id);
                 ProductoExistente.Descripcion = Producto.Descripcion;
                 ProductoExistente.Precio = Producto.Precio;
             }
@@ -39,7 +40,7 @@ namespace PromoVenta.BL
         }
         public Producto ObtenerProducto(int id)
         {
-            var Producto = _contexto.Producto.Include("Categoria").FirstOrDefault(p => p.Id == id);
+            var Producto = _contexto.Productos.Include("Categoria").FirstOrDefault(p => p.Id == id);
 
 
             return Producto;
@@ -47,9 +48,9 @@ namespace PromoVenta.BL
 
         public void EliminarProducto(int id)
         {
-            var Producto = _contexto.Producto.Find(id);
+            var Producto = _contexto.Productos.Find(id);
 
-            _contexto.Producto.Remove(Producto);
+            _contexto.Productos.Remove(Producto);
             _contexto.SaveChanges();
         }
 

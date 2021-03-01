@@ -1,4 +1,5 @@
 ﻿using PromoVenta.BL;
+using PromoVentas.WebAdmin.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace PromoVentas.Web.Controllers
 {
     public class CategoriaController : Controller
     {
-        CategoriaBL _categoriasBL;
+        PromoVenta.BL.CategoriasBL _categoriasBL;
 
         public CategoriaController()
         {
-            _categoriasBL = new CategoriaBL();
+            _categoriasBL = new PromoVenta.BL.CategoriasBL();
         }
         // GET: Categoria
         public ActionResult Index()
@@ -30,11 +31,11 @@ namespace PromoVentas.Web.Controllers
         }
         [HttpPost]//para que habra las paginas
         public ActionResult Crear(Categoria categoria)
-      
+
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if(categoria.Descripcion !=categoria.Descripcion.Trim())
+                if (categoria.Descripcion != categoria.Descripcion.Trim())
                 {
                     ModelState.AddModelError("Descripcion", "La descripcion no debe contener espacios al inicio o al final");
                     return View(categoria);

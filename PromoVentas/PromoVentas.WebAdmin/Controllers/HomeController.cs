@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace PromoVentas.WebAdmin.Controllers
+namespace PromoVentas.web.Controllers
 {
     public class HomeController : Controller
     {
