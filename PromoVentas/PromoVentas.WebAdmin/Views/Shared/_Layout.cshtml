@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET InventarioPlus</title>
+    <title>@ViewBag.Title - InventarioPlus</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -30,6 +30,10 @@
                     <li><!-- se anexo lo de categorias --> 
                         @Html.ActionLink("Categoria", "Index", "Categoria")
                     </li>
+                    <!--agregando clientes en el index principal-->
+                    <li>
+                        @Html.ActionLink("Clientes", "Index", "Clientes")
+                    </li>
 </ul>
             </div>
         </div>
@@ -39,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Inventario corporation</p>
+            <p>&copy; @DateTime.Now.Year - InventarioPlus</p>
         </footer>
     </div>
 

@@ -10,6 +10,8 @@ namespace PromoVenta.BL
 {
     public class Contexto: DbContext
     {
+        internal object Ordenes;
+
         public Contexto(): base(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDBFilename=" +
             Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\PromosVentaDB.mdf")
         {
@@ -22,5 +24,10 @@ namespace PromoVenta.BL
 
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        //agregango clientes
+        public DbSet<Clientes> Clientes { get; set; }
+        //agregadando las ordenes
+        public DbSet<OrdenDetalle> OrdenDetalle { get; set; }
+
     }
 }
