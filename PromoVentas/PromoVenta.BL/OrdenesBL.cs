@@ -22,13 +22,30 @@ namespace PromoVenta.BL
                 .Include("Cliente")
                 .ToList();
 
+
             return ListadeOrdenes;
+        }
+
+        public Orden ObtenerOrden(int id)
+        {
+            var orden = _contexto.Ordenes
+                .Include("Cliente").FirstOrDefault(p => p.Id == id);
+
+            return orden; 
         }
 
         public void GuardarOrden(Orden orden)
         {
-            _contexto.Ordenes.Add(orden);
-
+            if (orden.Id == 0)
+            {
+              _contexto.Ordenes.Add(orden);
+            } else
+            {
+                var ordenExistente = _contexto.Ordenes.Find(orden.Id);
+                ordenExistente.ClienteId = orden.ClienteId;
+                ordenExistente.Activo = orden.Activo;
+            }
+            
             _contexto.SaveChanges();
         }
     }
