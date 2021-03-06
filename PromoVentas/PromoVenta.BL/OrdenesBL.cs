@@ -24,5 +24,12 @@ namespace PromoVenta.BL
 
             return ListadeOrdenes;
         }
+
+        public void GuardarOrden(Orden orden)
+        {
+            _contexto.Ordenes.Add(orden);
+
+            _contexto.SaveChanges();
+        }
     }
 }
