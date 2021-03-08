@@ -10,12 +10,11 @@ namespace PromoVenta.BL
 {
     public class Contexto: DbContext
     {
-        internal object Ordenes;
 
         public Contexto(): base(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDBFilename=" +
             Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\PromosVentaDB.mdf")
         {
-
+            //estas llaves siempre deben de ir para eviar un erro de abstrato no se que jaajaj----
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -27,7 +26,8 @@ namespace PromoVenta.BL
         //agregango clientes
         public DbSet<Clientes> Clientes { get; set; }
         //agregadando las ordenes
-        public DbSet<OrdenDetalle> OrdenDetalle { get; set; }
+        public DbSet<Pedido> Pedido { get; set; }
+        public DbSet<PedidoDetalle> PedidoDetalle { get; set; }
 
     }
 }

@@ -1,18 +1,18 @@
-﻿@model IEnumerable<PromoVenta.BL.Orden>
+﻿@model IEnumerable<PromoVenta.BL.Pedido>
 
 @{
-    ViewBag.Title = "Orden";
+    ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Nueva Orden", "Crear")
+    @Html.ActionLink("Crear Nuevos Pedidos", "Crear")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente)
+        <th><!-- antes de seguir se debe de pasar de ClientesId a Clientes -->
+            @Html.DisplayNameFor(model => model.ClienteId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Fecha)
@@ -29,7 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Cliente)
+            @Html.DisplayFor(modelItem => item.ClienteId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Fecha)

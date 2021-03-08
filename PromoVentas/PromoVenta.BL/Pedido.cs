@@ -6,31 +6,31 @@ using System.Threading.Tasks;
 
 namespace PromoVenta.BL
 {
-    public class Orden
+    public class Pedido
     {
         //creamos el ID cliente la feca de la orden total
         public int Id { get; set; }
-        public int Cliente { get; set; }
+        public int ClienteId { get; set; }
         public Clientes cliente { get; set; }
         public DateTime Fecha { get; set; }
         public double Total { get; set; }
         public bool Activo { get; set; }
 
         //lista de ordenes
-        public List<OrdenDetalle> ListaOrdenDetalle { get; set; }
+        public List<PedidoDetalle> ListaOrdenDetalle { get; set; }
 
-        public Orden()
+        public Pedido()
         {
             Activo = true;
             Fecha = DateTime.Now;
         }
 
     }
-    public class OrdenDetalle
+    public class PedidoDetalle
     {
         public int Id { get; set; }
-        public int OrdenId { get; set; }
-        public Orden Orden { get; set; }
+        public int PedidoId { get; set; }
+        public Pedido Orden { get; set; }
 
         public int ProductoId { get; set; }
         public Producto Producto { get; set; }

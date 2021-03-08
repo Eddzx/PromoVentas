@@ -7,20 +7,20 @@ using System.Web.Mvc;
 
 namespace PromoVentas.WebAdmin.Controllers
 {
-    public class OrdenesController : Controller
+    public class PedidosController : Controller
     {
         // GET: Cliente
-        OrdenesBL _ordenesBL;
+        PedidosBL _pedidosBL;
         
-        public OrdenesController()
+        public PedidosController()
         {
-            _ordenesBL = new OrdenesBL();
+            _pedidosBL = new PedidosBL();
         }
 
         public ActionResult Index()
         {
-            var listadeOrdenes = _ordenesBL.ObtenerOrdenes();
-            return View(listadeOrdenes);
+            var listadePedidos = _pedidosBL.ObtenerPedidos();
+            return View(listadePedidos);
         }
     }
 }//no se han creado las demas vistas de elimar detalles etc, solo la vista INDEX--------------------------------------------------------
