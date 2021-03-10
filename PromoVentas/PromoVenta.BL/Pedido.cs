@@ -23,6 +23,7 @@ namespace PromoVenta.BL
         {
             Activo = true;
             Fecha = DateTime.Now;
+            ListaOrdenDetalle = new List<PedidoDetalle>();
         }
 
     }

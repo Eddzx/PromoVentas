@@ -45,9 +45,12 @@ namespace PromoVenta.BL
                 pedidoExistente.ClienteId = pedido.ClienteId;
                 pedidoExistente.Activo = pedido.Activo;
             }
-
-            _contexto.Pedido.Add(pedido);
-
+            _contexto.SaveChanges();
+        }
+        
+            public void GuardarPedidoDetalle(PedidoDetalle pedidoDetalle)
+        {
+             _contexto.PedidoDetalle.Add(pedidoDetalle);
             _contexto.SaveChanges();
         }
     }
