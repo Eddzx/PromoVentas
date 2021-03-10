@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<PromoVenta.BL.Pedido>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Pedidos";
 }
 
-<h2>Index</h2>
+<h2>Pedidos</h2>
 
 <p>
-    @Html.ActionLink("Crear Nuevos Pedidos", "Crear")
+    @Html.ActionLink("Nuevo Pedido", "Crear")
 </p>
 <table class="table">
     <tr>
         <th><!-- antes de seguir se debe de pasar de ClientesId a Clientes -->
-            @Html.DisplayNameFor(model => model.ClienteId)
+            @Html.DisplayNameFor(model => model.cliente)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Fecha)
