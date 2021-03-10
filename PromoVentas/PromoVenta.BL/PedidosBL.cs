@@ -10,12 +10,13 @@ namespace PromoVenta.BL
     {
         Contexto _contexto;
         public List<Pedido> ListadePedidos { get; set; }
+
         public PedidosBL()
         {
             _contexto = new Contexto();
             ListadePedidos = new List<Pedido>();
-
         }
+
         public List<Pedido> ObtenerPedidos()
         {
             ListadePedidos = _contexto.Pedido
@@ -23,6 +24,13 @@ namespace PromoVenta.BL
                 .ToList();
 
             return ListadePedidos;
+        }
+
+        public void GuardarPedido(Pedido pedido)
+        {
+            _contexto.Pedido.Add(pedido);
+
+            _contexto.SaveChanges();
         }
     }
 }
