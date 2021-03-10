@@ -58,5 +58,45 @@ namespace PromoVentas.WebAdmin.Controllers
 
             return View(pedido);
         }
+
+        public ActionResult Editar(int id)
+        {
+            var pedido = _pedidosBL.ObtenerPedidos(id);
+            var clientes = _clientesBL.ObtenerClientes();
+
+            ViewBag.ClienteId = new SelectList(clientes, "Id", "Nombre", pedido.ClienteId);
+
+            return View(pedido);
+        }
+
+        [HttpPost]
+        public ActionResult Editar(Pedido pedido)
+        {
+            if (ModelState.IsValid)
+            {
+                if (pedido.ClienteId == 0)
+                {
+                    ModelState.AddModelError("ClienteId", "Seleccione un cliente");
+                    return View(pedido);
+                }
+
+                _pedidosBL.GuardarPedido(pedido);
+
+                return RedirectToAction("Index");
+            }
+
+            var clientes = _clientesBL.ObtenerClientes();
+
+            ViewBag.ClienteId = new SelectList(clientes, "Id", "Nombre");
+
+            return View(pedido);
+        }
+
+        public ActionResult Detalle(int id)
+        {
+            var pedido = _pedidosBL.ObtenerPedidos(id);
+
+            return View(pedido);
+        }
     }
-}
+}  
