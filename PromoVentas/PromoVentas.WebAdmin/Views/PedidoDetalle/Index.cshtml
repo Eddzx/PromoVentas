@@ -4,7 +4,7 @@
     ViewBag.Title = "Pedido Detalle";
 }
 
-<h2>Detalle del pedido No: @model.Id </h2>
+<h2>Detalle del pedido No: @Model.Id </h2>
 
 <p>
     @Html.ActionLink("Nuevo producto", "Crear")
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Cliente.Nombre)
+            @Html.DisplayNameFor(model => model.cliente.Nombre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Fecha)
@@ -26,10 +26,10 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model.ListadePedidoDetalle) {
+@foreach (var item in Model.ListaOrdenDetalle) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.producto.Descripcion)
+            @Html.DisplayFor(modelItem => item.Producto.Descripcion)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Cantidad)
