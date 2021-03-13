@@ -15,13 +15,13 @@ namespace PromoVentas.WebAdmin.Controllers
         {
             _PedidoBL = new PedidosBL();
             _ProductosBL = new ProductosBL();
-
-
         }
         // GET: PedidosDetalle
         public ActionResult Index(int id)
         {
             var pedido = _PedidoBL.ObtenerPedido(id);
+            pedido.ListaPedidoDetalle = _PedidoBL.ObtenerPedidoDetalle(id);
+
             return View(pedido);
         }
         public ActionResult Crear(int id)
@@ -31,8 +31,10 @@ namespace PromoVentas.WebAdmin.Controllers
             var Productos = _ProductosBL.ObtenerProductos();
 
             ViewBag.productoId = new SelectList(Productos, "Id", "Descripcion");
+
             return View(NuevoPedidoDetalle);
         }
+
         [HttpPost]
         public ActionResult Crear (PedidoDetalle  pedidoDetalle)
         {
@@ -41,14 +43,32 @@ namespace PromoVentas.WebAdmin.Controllers
                 if (pedidoDetalle.ProductoId== 0)
                 {
                     ModelState.AddModelError("ProductoId", "Seleccione un producto");
+
                     return View(pedidoDetalle);
                 }
                 _PedidoBL.GuardarPedidoDetalle(pedidoDetalle);
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Index", new { Id = pedidoDetalle.PedidoId });
             }
             var productos = _ProductosBL.ObtenerProductos();
             ViewBag.ProductoId = new SelectList(productos, "Id", "Descripcion");
+
             return View(pedidoDetalle);
+        }
+
+        public ActionResult Eliminar(int Id)
+        {
+            var pedidoDetalle = _PedidoBL.ObtenerPedidoDetallePorId(Id);
+
+            return View(pedidoDetalle);
+        }
+
+        [HttpPost]
+        public ActionResult Eliminar(PedidoDetalle pedidoDetalle)
+        {
+            _PedidoBL.EliminarPedidoDetalle(pedidoDetalle.Id);
+
+            return RedirectToAction("Index", new { Id = pedidoDetalle.PedidoId });
         }
     }
 }

@@ -17,13 +17,14 @@ namespace PromoVenta.BL
         public bool Activo { get; set; }
 
         //lista de ordenes
-        public List<PedidoDetalle> ListaOrdenDetalle { get; set; }
+        public List<PedidoDetalle> ListapedidoDetalle { get; set; }
+        public List<PedidoDetalle> ListaPedidoDetalle { get; set; }
 
         public Pedido()
         {
             Activo = true;
             Fecha = DateTime.Now;
-            ListaOrdenDetalle = new List<PedidoDetalle>();
+            ListaPedidoDetalle = new List<PedidoDetalle>();
         }
 
     }

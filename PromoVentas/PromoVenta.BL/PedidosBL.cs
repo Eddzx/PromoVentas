@@ -26,6 +26,23 @@ namespace PromoVenta.BL
             return ListadePedidos;
         }
 
+        public List<PedidoDetalle> ObtenerPedidoDetalle(int pedidoId)
+        {
+            var listadePedidosDetalle = _contexto.PedidoDetalle
+                .Include("Producto")
+                .Where(p => p.PedidoId == pedidoId).ToList();
+
+            return listadePedidosDetalle();
+        }
+
+        public PedidoDetalle ObtenerPedidoDetallePorId(int id)
+        {
+            var pedidoDetalle = _contexto.PedidoDetalle
+            .Include("Cliente").FirstOrDefault(p => p.Id == id);
+
+            return pedidoDetalle;
+        }
+
         public Pedido ObtenerPedido(int id)
         {
             var pedido = _contexto.Pedido
@@ -48,9 +65,29 @@ namespace PromoVenta.BL
             _contexto.SaveChanges();
         }
         
-            public void GuardarPedidoDetalle(PedidoDetalle pedidoDetalle)
+        public void GuardarPedidoDetalle(PedidoDetalle pedidoDetalle)
         {
+            var producto = _contexto.Productos.Find(pedidoDetalle.ProductoId);
+
+            pedidoDetalle.Precio = producto.Precio;
+            pedidoDetalle.Total = pedidoDetalle.Cantidad * pedidoDetalle.Precio; 
+
              _contexto.PedidoDetalle.Add(pedidoDetalle);
+
+            var pedido = _contexto.Pedido.Find(pedidoDetalle.PedidoId);
+            pedido.Total = pedido.Total + pedidoDetalle.Total;
+
+            _contexto.SaveChanges();
+        }
+
+        public void EliminarPedidoDetalle(int Id)
+        {
+            var pedidoDetalle = _contexto.PedidoDetalle.Find(Id);
+            _contexto.PedidoDetalle.Remove(pedidoDetalle);
+
+            var pedido = _contexto.Pedido.Find(pedidoDetalle.PedidoId);
+            pedido.Total = pedido.Total - pedidoDetalle.Total;
+
             _contexto.SaveChanges();
         }
     }
