@@ -32,7 +32,7 @@ namespace PromoVenta.BL
                 .Include("Producto")
                 .Where(p => p.PedidoId == pedidoId).ToList();
 
-            return listadePedidosDetalle();
+            return listadePedidosDetalle;
         }
 
         public PedidoDetalle ObtenerPedidoDetallePorId(int id)

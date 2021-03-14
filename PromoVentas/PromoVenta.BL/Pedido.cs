@@ -8,7 +8,7 @@ namespace PromoVenta.BL
 {
     public class Pedido
     {
-        //creamos el ID cliente la feca de la orden total
+        //creamos el ID cliente la fecha de la orden total
         public int Id { get; set; }
         public int ClienteId { get; set; }
         public Clientes cliente { get; set; }
@@ -32,7 +32,7 @@ namespace PromoVenta.BL
     {
         public int Id { get; set; }
         public int PedidoId { get; set; }
-        public Pedido Orden { get; set; }
+        public Pedido Pedido { get; set; }
 
         public int ProductoId { get; set; }
         public Producto Producto { get; set; }
