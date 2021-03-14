@@ -20,7 +20,7 @@ namespace PromoVenta.BL
         public List<Pedido> ObtenerPedidos()
         {
             ListadePedidos = _contexto.Pedido
-                .Include("Clientes")
+                .Include("Cliente")
                 .ToList();
 
             return ListadePedidos;
