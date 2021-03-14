@@ -25,7 +25,7 @@ namespace PromoVenta.BL
         public DbSet<Categoria> Categorias { get; set; }
         //agregango clientes
         public DbSet<Clientes> Clientes { get; set; }
-        //agregadando las ordenes
+        //agregadando Pedidos
         public DbSet<Pedido> Pedido { get; set; }
         public DbSet<PedidoDetalle> PedidoDetalle { get; set; }
 
