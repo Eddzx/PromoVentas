@@ -34,7 +34,7 @@ namespace PromoVenta.BL
             else
             {
                 var clientesExistente = _contexto.Clientes.Find(clientes.Id);
-                clientesExistente.NombreCliente = clientes.NombreCliente;
+                clientesExistente.Nombre = clientes.Nombre;
             }
 
             _contexto.SaveChanges();

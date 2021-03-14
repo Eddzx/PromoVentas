@@ -17,7 +17,7 @@ namespace PromoVenta.BL
         public bool Activo { get; set; }
 
         //lista de ordenes
-        public List<PedidoDetalle> ListapedidoDetalle { get; set; }
+      
         public List<PedidoDetalle> ListaPedidoDetalle { get; set; }
 
         public Pedido()

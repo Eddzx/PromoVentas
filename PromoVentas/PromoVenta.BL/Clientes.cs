@@ -12,7 +12,7 @@ namespace PromoVenta.BL
         public int Id { get; set; }
         [Required(ErrorMessage = "Ingrese la Clientes")]
         //datso del formulario del cliente
-        public string NombreCliente { get; set; }
+        public string Nombre{ get; set; }
         public string Direccion { get; set; }
         public int Telefono { get; set; }
         public bool Activo { get; set; }

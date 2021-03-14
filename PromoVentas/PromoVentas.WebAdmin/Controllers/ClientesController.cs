@@ -35,7 +35,7 @@ namespace PromoVentas.WebAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (clientes.NombreCliente != clientes.NombreCliente.Trim())
+                if (clientes.Nombre != clientes.Nombre.Trim())
                 {
                     ModelState.AddModelError("Descripcion", "La descripcion no debe contener espacios al inicio o al final");
                     return View(clientes);
@@ -56,7 +56,7 @@ namespace PromoVentas.WebAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (clientes.NombreCliente != clientes.NombreCliente.Trim())
+                if (clientes.Nombre != clientes.Nombre.Trim())
                 {
                     ModelState.AddModelError("Descripcion", "La descripcion no debe contener espacios al inicio o al final");
                     return View(clientes);
