@@ -20,14 +20,18 @@ namespace PromoVenta.BL
 
         public List<Clientes> ObtenerClientes()
         {
-            ListadeClientes = _contexto.Clientes.ToList();
+            ListadeClientes = _contexto.Clientes
+                .OrderBy(r => r.Nombre)
+                .ToList();
 
             return ListadeClientes;
         }
+
         public List<Clientes> ObtenerClientesActivos()
         {
             ListadeClientes = _contexto.Clientes
                 .Where(r => r.Activo == true)
+                .OrderBy(r => r.Nombre)
                 .ToList();
 
             return ListadeClientes;
