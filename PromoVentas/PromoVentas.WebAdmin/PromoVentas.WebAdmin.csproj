@@ -197,6 +197,7 @@
     <Content Include="Views\PedidoDetalle\Index.cshtml" />
     <Content Include="Views\PedidoDetalle\Crear.cshtml" />
     <Content Include="Views\PedidoDetalle\Eliminar.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
