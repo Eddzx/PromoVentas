@@ -25,6 +25,17 @@ namespace PromoVenta.BL
 
             return ListadeProductos;
         }
+
+        public List<Producto> ObtenerProductosActivos()
+        {
+            ListadeProductos = _contexto.Productos
+                  .Include("Categoria")
+                  .Where(r => r.Activo == true)
+                  .ToList();
+
+            return ListadeProductos;
+        }
+
         public void GuardarProducto(Producto Producto)
         {
             if(Producto.Id == 0)

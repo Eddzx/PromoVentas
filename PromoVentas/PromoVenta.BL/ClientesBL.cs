@@ -9,7 +9,6 @@ namespace PromoVenta.BL
    public class ClientesBL
     {
         Contexto _contexto;
-
         public List<Clientes> ListadeClientes { get; set; }
         public int Id { get; private set; }
 
@@ -25,6 +24,15 @@ namespace PromoVenta.BL
 
             return ListadeClientes;
         }
+        public List<Clientes> ObtenerClientesActivos()
+        {
+            ListadeClientes = _contexto.Clientes
+                .Where(r => r.Activo == true)
+                .ToList();
+
+            return ListadeClientes;
+        }
+
         public void GuardarClientes(Clientes clientes)
         {
             if (clientes.Id == 0)

@@ -24,12 +24,13 @@ namespace PromoVentas.WebAdmin.Controllers
 
             return View(pedido);
         }
+
         public ActionResult Crear(int id)
         {
             var NuevoPedidoDetalle = new PedidoDetalle();
             NuevoPedidoDetalle.PedidoId = id;
-            var Productos = _ProductosBL.ObtenerProductos();
 
+            var Productos = _ProductosBL.ObtenerProductosActivos();
             ViewBag.productoId = new SelectList(Productos, "Id", "Descripcion");
 
             return View(NuevoPedidoDetalle);
@@ -50,7 +51,7 @@ namespace PromoVentas.WebAdmin.Controllers
 
                 return RedirectToAction("Index", new { Id = pedidoDetalle.PedidoId });
             }
-            var productos = _ProductosBL.ObtenerProductos();
+            var productos = _ProductosBL.ObtenerProductosActivos();
             ViewBag.ProductoId = new SelectList(productos, "Id", "Descripcion");
 
             return View(pedidoDetalle);

@@ -29,7 +29,7 @@ namespace PromoVentas.WebAdmin.Controllers
         public ActionResult Crear()
         {
             var nuevoPedido = new Pedido();
-            var clientes = _clientesBL.ObtenerClientes();
+            var clientes = _clientesBL.ObtenerClientesActivos();
 
             ViewBag.ClienteId = new SelectList(clientes, "Id", "Nombre");
 
@@ -52,7 +52,7 @@ namespace PromoVentas.WebAdmin.Controllers
                 return RedirectToAction("Index");
             }
 
-            var clientes = _clientesBL.ObtenerClientes();
+            var clientes = _clientesBL.ObtenerClientesActivos();
 
             ViewBag.ClienteId = new SelectList(clientes, "Id", "Nombre");
 
@@ -62,7 +62,7 @@ namespace PromoVentas.WebAdmin.Controllers
         public ActionResult Editar(int id)
         {
             var pedido = _pedidosBL.ObtenerPedido(id);
-            var clientes = _clientesBL.ObtenerClientes();
+            var clientes = _clientesBL.ObtenerClientesActivos();
 
             ViewBag.ClienteId = new SelectList(clientes, "Id", "Nombre", pedido.ClienteId);
 
@@ -85,7 +85,7 @@ namespace PromoVentas.WebAdmin.Controllers
                 return RedirectToAction("Index");
             }
 
-            var clientes = _clientesBL.ObtenerClientes();
+            var clientes = _clientesBL.ObtenerClientesActivos();
 
             ViewBag.ClienteId = new SelectList(clientes, "Id", "Nombre", pedido.ClienteId);
 
