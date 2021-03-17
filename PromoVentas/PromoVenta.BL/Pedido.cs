@@ -36,6 +36,7 @@ namespace PromoVenta.BL
 
         public int ProductoId { get; set; }
         public Producto Producto { get; set; }
+
         public int Cantidad { get; set; }
         public double Precio { get; set; }
         public double Total { get; set; }
