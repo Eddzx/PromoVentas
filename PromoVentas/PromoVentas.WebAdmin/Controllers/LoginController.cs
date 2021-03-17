@@ -13,5 +13,13 @@ namespace PromoVentas.WebAdmin.Controllers
         {
             return View();
         }
-    }
+
+        [HttpPost]
+        public ActionResult Index(FormCollection Data)
+        {
+
+            return RedirectToAction("Index","Home");
+        }
+
+  }
 }
