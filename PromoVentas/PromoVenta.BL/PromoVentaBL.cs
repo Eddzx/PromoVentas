@@ -21,7 +21,7 @@ namespace PromoVenta.BL
         {
             ListadeProductos = _contexto.Productos
                   .Include("Categoria")
-                  .OrderBy(r => r.Categoria.Descripcion)
+                  .OrderBy(r => r.categoria.Descripcion)
                   .ThenBy(r => r.Descripcion)
                   .ToList();
 
