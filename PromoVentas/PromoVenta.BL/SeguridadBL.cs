@@ -16,13 +16,12 @@ namespace PromoVenta.BL
         {
             _contexto = new Contexto();
         }
-
         public bool Autorizar(string nombreUsuario, string contrasena)
         {
-           
+            var contrasenaEncriptada = Encriptar.CodificarContrasena(contrasena);    
             var usuario = _contexto.Usuarios
                 .FirstOrDefault(r => r.Nombre == nombreUsuario &&
-                r.Contrasena == Encriptar.CodificarContrasena(contrasena));
+                r.Contrasena == contrasenaEncriptada);
 
             if (usuario != null)
             {
