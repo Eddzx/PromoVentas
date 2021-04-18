@@ -8,6 +8,9 @@ using System.Web.Mvc;
 
 namespace PromoVentas.Web.Controllers
 {
+    //========================================= agregando autorizacion ==========================================
+    [Authorize]
+
     public class CategoriaController : Controller
     {
         PromoVenta.BL.CategoriasBL _categoriasBL;

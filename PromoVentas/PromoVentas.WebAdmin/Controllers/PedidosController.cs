@@ -7,6 +7,9 @@ using System.Web.Mvc;
 
 namespace PromoVentas.WebAdmin.Controllers
 {
+    //========================================= agregando autorizacion ==========================================
+    [Authorize]
+
     public class PedidosController : Controller
     {    // GET: Cliente
         PedidosBL _pedidosBL;

@@ -7,6 +7,10 @@ using System.Web.Mvc;
 
 namespace PromoVentas.WebAdmin.Controllers
 {
+    //========================================= agregando autorizacion ==========================================
+    [Authorize]
+
+
     public class PedidoDetalleController : Controller
     {
         PedidosBL _PedidoBL;

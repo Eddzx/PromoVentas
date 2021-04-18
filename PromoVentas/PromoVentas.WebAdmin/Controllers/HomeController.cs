@@ -2,6 +2,9 @@
 
 namespace PromoVentas.web.Controllers
 {
+    //========================================= agregando autorizacion ==========================================
+    [Authorize]
+
     public class HomeController : Controller
     {
         // GET: Home

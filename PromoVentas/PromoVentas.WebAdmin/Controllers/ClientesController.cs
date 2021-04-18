@@ -8,6 +8,9 @@ using System.Web.Mvc;
 
 namespace PromoVentas.WebAdmin.Controllers
 {
+    //========================================= agregando autorizacion ==========================================
+    [Authorize]
+
     public class ClientesController : Controller
     {
         PromoVenta.BL.ClientesBL _clientesBL;

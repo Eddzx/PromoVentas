@@ -7,9 +7,8 @@ using System.Web.Mvc;
 
 namespace PromoVentas.web.Controllers
 {
-
-   
-
+    //========================================= agregando autorizacion ==========================================
+    [Authorize]
     public class ProductosController : Controller
 
     {
