@@ -30,5 +30,6 @@ namespace PromoVenta.BL
         public DbSet<Pedido> Pedido { get; set; }
         public DbSet<PedidoDetalle> PedidoDetalle { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Bodega> Bodegas { get; set; }
     }
 }
