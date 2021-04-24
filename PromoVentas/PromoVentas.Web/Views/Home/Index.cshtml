@@ -4,89 +4,10 @@
     ViewBag.Title = "INICIO";
 }
 
-<header>
-    <nav class="navbar-top">
-        <ul class="navbar-top-ul">
-            <li class="navbar-top-item">
-                <a href="login.html" class="navbar-top-links">Registro</a>
-            </li>
-            <li class="navbar-top-item">
-                <a href="login.html" class="navbar-top-links">Iniciar sesión</a>
-            </li>
-            <li class="navbar-top-item">
-                <a href="#" class="navbar-top-links">
-                    <i class="zmdi zmdi-shopping-cart"></i> Pedidos
-                    <!-- <i class="zmdi zmdi-chevron-down"></i> -->
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <nav class="navbar-cover">
-        <!--n-->
-    <nav class="nav-menu" id="mySidenav">
-        <form class="form-group " action="#">
-            <div class="form-group-container">
-                <span class="form-group-icon"><i class="zmdi zmdi-search"></i></span>
-                <input type="text" class="form-group-input" placeholder="Buscar...">
-            </div>
-        </form>
-        <a class="is-hidden-mobile brand is-uppercase has-text-weight-bold has-text-dark" href="index.html">PromoVentas</a>
-            <ul class="nav-menu-ul">
-                <li class="nav-menu-item" id="Productos">
-                    <a class="nav-menu-link link-submenu active" href="#">
-                        Productos <i class="zmdi zmdi-chevron-down"></i>
-                    </a>
-                    <div class="container-sub-menu">
-                        <ul class="sub-menu-ul">
-                            <li class="nav-menu-item ">
-                                <a class="nav-menu-link" href="#">
-                                    <strong>Categorias</strong>
-                                    <i class="zmdi zmdi-chevron-down "></i>
-                                </a>
-                                <ul class="sub-menu-ul">
-                                    <li class="nav-menu-item"><a class="nav-menu-link" href="#">Alimentos</a></li>
-                                    <li class="nav-menu-item"><a class="nav-menu-link" href="#">Bebidas</a></li>
-                                    <li class="nav-menu-item"><a class="nav-menu-link" href="#">Accesorios</a></li>
-                                    <li class="nav-menu-item"><a class="nav-menu-link" href="#">Producto de limpieza</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="ads is-hidden-touch">
-                            <h1 class="ads-h1">PromoVentas te ofrece</h1>
-                            <h2 class="ads-h2">Los mejores precios</h2>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-menu-item" id="Pedidos">
-                    <a class="nav-menu-link link-submenu active" href="#">
-                        Pedidos <i class="zmdi zmdi-chevron-down"></i>
-                    </a>
-                    <div class="container-sub-menu">
-                        <ul class="sub-menu-ul">
-                            <li class="nav-menu-item ">
-                                <a class="nav-menu-link" href="#">
-                                    <strong>Ver Pedidos</strong>
-                                    <i class="zmdi zmdi-chevron-down "></i>
-                                </a>
-                                <ul class="sub-menu-ul">
-                                    <li class="nav-menu-item"><a class="nav-menu-link" href="#">pedido</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="ads is-hidden-touch">
-                            <h1 class="ads-h1">PromoVentas te ofrece</h1>
-                            <h2 class="ads-h2">Accecibilidad y Rapidez</h2>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </nav>
-</header>
-<!-- Banner -->
+ <!-- Banner -->
 <div class="banner">
     <div class="banner-container">
-        <h1 class="title"><font size="15">PromoVentas</font></h1>
+        <h1 class="title"><font size="10">PromoVentas</font></h1>
         <a class="btn btn-default">Crear Pedidos</a>
     </div>
 </div>
@@ -99,23 +20,26 @@
 </div>
 <!-- Sección de fotografías -->
 <div class="container">
+        <!--================================================llamados de productos=================================================-->
+@foreach (var producto in Model .Take(4)
+    .OrderBy(r=> Guid.NewGuid())
+    )
+{
     <div class="columns is-multiline">
         <div class="column is-full-mobile">
             <div class="columns is-centered is-mobile is-multiline">
                 <!-- 1 Sección de fotografías -->
                 <div class="column is-half column-full">
                     <div class="card">
-                        <span class="price">$89.99</span>
-                        <img src="~/img/item-1.png" alt="">
+                        <span class="price">L @producto.Precio</span>
+                        <img src="@(ViewBag.adminWebsiteUrl + producto.UrlImagen)" alt="">
                         <div class="card-info">
                             <h4 class="has-text-black has-text-centered has-text-weight-bold">
-                                Women's Burnt Orenge
-                                Casual TEE $89.99
+                                @producto.Descripcion
+                                L @producto.Precio
                             </h4>
                             <p class="has-text-centered">
-                                Classic casual t-shirt for women on the move.
-                                100%
-                                cotton.
+
                             </p>
                             <div class="card-buttons">
                                 <a href="#" class="btn btn--mini-rounded">
@@ -133,17 +57,14 @@
                 </div>
                 <div class="column column-full is-half">
                     <div class="card">
-                        <span class="price">$47.50</span>
-                        <img src="~/img/item-2.png" alt="">
+                        <span class="price">L @producto.Precio</span>
+                        <img src="@(ViewBag.adminWebsiteUrl + producto.UrlImagen)" alt="">
                         <div class="card-info">
                             <h4 class="has-text-black has-text-centered has-text-weight-bold">
-                                Women's Burnt Orenge
-                                Casual TEE $47.50
+                                @producto.Descripcion
+                                L @producto.Precio
                             </h4>
                             <p class="has-text-centered">
-                                Classic casual t-shirt for women on the move.
-                                100%
-                                cotton.
                             </p>
                             <div class="card-buttons">
                                 <a href="#" class="btn btn--mini-rounded">
@@ -161,17 +82,14 @@
                 </div>
                 <div class="column is-full">
                     <div class="card">
-                        <span class="price">$65.95</span>
-                        <img src="~/img/item-3.png" alt="">
+                        <span class="price">L @producto.Precio</span>
+                        <img src="@(ViewBag.adminWebsiteUrl + producto.UrlImagen)" alt="">
                         <div class="card-info">
                             <h4 class="has-text-black has-text-centered has-text-weight-bold">
-                                Women's Burnt Orenge
-                                Casual TEE $65.95
+                                @producto.Descripcion
+                                L @producto.Precio
                             </h4>
                             <p class="has-text-centered">
-                                Classic casual t-shirt for women on the move.
-                                100%
-                                cotton.
                             </p>
                             <div class="card-buttons">
                                 <a href="#" class="btn btn--mini-rounded">
@@ -195,17 +113,15 @@
             <div class="columns is-mobile is-multiline">
                 <div class="column is-full">
                     <div class="card">
-                        <span class="price"><strike>$107</strike> $89.99</span>
-                        <img src="~/img/item-4.png" alt="">
+                        <span class="price"><strike></strike> L @producto.Precio</span>
+                        <img src="@(ViewBag.adminWebsiteUrl + producto.UrlImagen)" alt="">
                         <div class="card-info">
                             <h4 class="has-text-black has-text-centered has-text-weight-bold">
-                                Women's Burnt Orenge
-                                Casual TEE $89.99
+                                @producto.Descripcion
+                                L @producto.Precio
                             </h4>
                             <p class="has-text-centered">
-                                Classic casual t-shirt for women on the move.
-                                100%
-                                cotton.
+                            
                             </p>
                             <div class="card-buttons">
                                 <a href="#" class="btn btn--mini-rounded">
@@ -223,17 +139,15 @@
                 </div>
                 <div class="column column-full is-half">
                     <div class="card">
-                        <span class="price">$29.99</span>
-                        <img src="~/img/item-5.png" alt="">
+                        <span class="price">L @producto.Precio</span>
+                        <img src="@(ViewBag.adminWebsiteUrl + producto.UrlImagen)" alt="">
                         <div class="card-info">
                             <h4 class="has-text-black has-text-centered has-text-weight-bold">
-                                Women's Burnt Orenge
-                                Casual TEE $29.99
+                                @producto.Descripcion
+                                L @producto.Precio
                             </h4>
                             <p class="has-text-centered">
-                                Classic casual t-shirt for women on the move.
-                                100%
-                                cotton.
+                      
                             </p>
                             <div class="card-buttons">
                                 <a href="#" class="btn btn--mini-rounded">
@@ -251,17 +165,15 @@
                 </div>
                 <div class="column column-full is-half">
                     <div class="card">
-                        <span class="price">$34.79</span>
-                        <img src="~/img/item-6.png" alt="">
+                        <span class="price">L @producto.Precio</span>
+                        <img src="@(ViewBag.adminWebsiteUrl + producto.UrlImagen)" alt="">
                         <div class="card-info">
                             <h4 class="has-text-black has-text-centered has-text-weight-bold">
-                                Women's Burnt Orenge
-                                Casual TEE $34.79
+                                @producto.Descripcion
+                                L @producto.Precio
                             </h4>
                             <p class="has-text-centered">
-                                Classic casual t-shirt for women on the move.
-                                100%
-                                cotton.
+
                             </p>
                             <div class="card-buttons">
                                 <a href="#" class="btn btn--mini-rounded">
@@ -280,6 +192,7 @@
             </div>
         </div>
     </div>
+    }
 </div>
 <div class="container container-full">
     <div class="columns is-centered is-multiline">
@@ -298,6 +211,52 @@
                         <a href="#" class="btn btn-default is-size-7">Ver ahora</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="columns is-multiline">
+        <div class="column">
+            <ul class="footer-ul">
+                <li class="footer-item">
+                    <h3 class="has-text-weight-bold">Información</h3>
+                </li>
+                <li class="footer-item"><a class="footer-link" href="#">Productos</a></li>
+                <li class="footer-item"><a class="footer-link" href="#">Servicios </a></li>
+            </ul>
+        </div>
+
+
+        <div class="column">
+            <ul class="footer-ul">
+                <li class="footer-item">
+                    <h3 class="has-text-weight-bold">Tu cuenta</h3>
+                </li>
+                <li class="footer-item"><a class="footer-link" href="#">Iniciar sesión</a></li>
+                <li class="footer-item"><a class="footer-link" href="#">Registro</a></li>
+                <li class="footer-item"><a class="footer-link" href="#">Ver Pedidos </a></li>
+
+            </ul>
+        </div>
+        <div class="column">
+            <ul class="footer-ul">
+                <li class="footer-item">
+                    <h3 class="has-text-weight-bold">Categorias</h3>
+                </li>
+                <li class="footer-item"><a class="footer-link" href="#">Alimentos</a></li>
+                <li class="footer-item"><a class="footer-link" href="#">Bebidas</a></li>
+                <li class="footer-item"><a class="footer-link" href="#">Accesorios </a></li>
+                <li class="footer-item"><a class="footer-link" href="#">Productos de limpieza</a></li>
+                <li class="footer-item"><a class="footer-link" href="#">Borrar tu categoria</a></li>
+            </ul>
+        </div>
+
+        <div class="column is-full">
+            <div class="footer-socials">
+                <a class="footer-solcials-link" href="#"><i class="zmdi zmdi-facebook"></i></a>
+                <a class="footer-solcials-link" href="#"><i class="zmdi zmdi-instagram"></i></a>
+                <a class="footer-solcials-link" href="#"><i class="zmdi zmdi-youtube"></i></a>
             </div>
         </div>
     </div>
